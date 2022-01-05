@@ -1,0 +1,38 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+
+    <% form.label :name %>
+
+    <%= form.text_field :name, class:"form-control", placeholder:"Name of product" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :prices, class:"form-control", placeholder:"Price of product (may include decimals)"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :description, class:"form-control", placeholder:"Description of product" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.number_field :user_id, id: :product_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
+  <br>
+<% end %>

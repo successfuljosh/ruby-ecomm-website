@@ -1,0 +1,2 @@
+class GeneralProduct < ApplicationRecord
+end

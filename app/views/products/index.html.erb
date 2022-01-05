@@ -1,0 +1,35 @@
+
+<h1>My Basket</h1>
+
+<% if user_signed_in? %>
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Prices</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+        <% @products.each do |product| %>
+        <% if current_user.email == product.user.email %>
+              <tr>
+                <td><%= link_to product.name, product %></td>
+                <td><%= product.prices %></td>
+                <td><%= product.description %></td>
+        
+              </tr>
+          <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<br>
+<a href="#" class="btn btn-secondary">Check Out </a>
+
+<% else %>  
+<b>You need to login</b>
+<% end %>
